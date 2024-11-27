@@ -26,37 +26,45 @@ public class LoginActivity extends AppCompatActivity {
         edPassword= findViewById(R.id.editTextLoginPassword);
         btn = findViewById(R.id.buttonLogin);
         tv= findViewById(R.id.textViewNewUser);
+        SharedPreferences sharedPreferences= getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
+        if (sharedPreferences.getBoolean("directLogin", false)) {
+            // If the user is already logged in, start MainActivity and finish LoginActivity
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+            return; // Exit onCreate to prevent further execution
+        }
 
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = edUsername.getText().toString();
-                String password = edPassword.getText().toString();
-                Database db= new Database(getApplicationContext(),"healthcare",null,1);
-                if(username.isEmpty() || password.isEmpty()){
-                    Toast.makeText(getApplicationContext(),"Please fill all the details",Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    if(db.login(username,password)==1) {
-                        Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
-                        SharedPreferences sharedPreferences= getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor= sharedPreferences.edit();
-                        editor.putString("username",username);
-                        editor.apply();
+//                String username = edUsername.getText().toString();
+//                String password = edPassword.getText().toString();
+//                DatabaseLogin db= new DatabaseLogin(getApplicationContext(),"healthcare",null,1);
+//                if(username.isEmpty() || password.isEmpty()){
+//                    Toast.makeText(getApplicationContext(),"Please fill all the details",Toast.LENGTH_SHORT).show();
+//                }
+//                else {
+//                    if(db.login(username,password)==1) {
+//                        Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+//                        SharedPreferences.Editor editor= sharedPreferences.edit();
+//                        editor.putString("username",username);
+//                        editor.putBoolean("directLogin",true);
+//                        editor.apply();
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                    }
-                }
+//                        finish();
+//                    }
+//                    else { Toast.makeText(getApplicationContext(), "Invalid Password", Toast.LENGTH_SHORT).show(); }
+//                }
             }
         });
-
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
             }
         });
-
 
     }
 }

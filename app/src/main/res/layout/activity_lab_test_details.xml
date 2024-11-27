@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/back1"
+    tools:context=".LabTestDetailsActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="24 * 7 HEALTHCARE"
+        android:textColor="@color/purple_200"
+        android:textSize="34sp"
+        android:layout_margin="20dp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/ldloc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deliver Location : Rajshahi"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/LDTitleName"
+        android:layout_width= "wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lab Test And Packages"
+        android:textColor="@color/yellowLight"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/textmultiline"
+        android:layout_width="290dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:textColor="@color/colorWhite"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/totalcost"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/yellowLight"
+        android:text="Total Cost : X/-"
+        android:textSize="20sp"
+        />
+        <Button
+            android:id="@+id/addtocart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_bg"
+            android:text="ADD TO CART" />
+        <Button
+            android:id="@+id/ldbackbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/btn_bg"
+            android:text="Back" />
+</LinearLayout>

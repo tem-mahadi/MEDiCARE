@@ -4,17 +4,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.temmahadi.healthcare.BackEnd.ApiService;
+import com.temmahadi.healthcare.BackEnd.MobileNumberRequest;
+import com.temmahadi.healthcare.BackEnd.OTPActivity;
+import com.temmahadi.healthcare.BackEnd.RetrofitClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText edUsername, edEmail, edPassword, edConfirm;
+    EditText edUsername, edPhone, edPassword, edConfirm;
     Button btn;
-    TextView tv;
+    TextView tv; ProgressBar progressBar; MobileNumberRequest mobileNumberRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +34,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         edUsername = findViewById(R.id.editTextRegUsername);
         edPassword = findViewById(R.id.editTextRegPassword);
-        edEmail = findViewById(R.id.editTextRegEmail);
+        edPhone = findViewById(R.id.editTextRegPhone);
         edConfirm = findViewById(R.id.editTextConfirmPassword);
         btn = findViewById(R.id.buttonRegister);
         tv = findViewById(R.id.textViewExUser);
+        progressBar = findViewById(R.id.progressBar);
 
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,18 +50,18 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String username = edUsername.getText().toString();
-                String email = edEmail.getText().toString();
+                String phone = edPhone.getText().toString();
                 String password = edPassword.getText().toString();
                 String confirm = edConfirm.getText().toString();
-                Database db= new Database(getApplicationContext(),"healthcare",null,1);
-                if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
+                DatabaseLogin db= new DatabaseLogin(getApplicationContext(),"healthcare",null,1);
+                if (username.isEmpty() || phone.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please fill all the details", Toast.LENGTH_SHORT).show();
                 } else {
                     if (password.compareTo(confirm) == 0) {
                         if(isValid(password)){
-                            db.register(username,email,password);
+                            db.register(username,phone,password);
                             Toast.makeText(getApplicationContext(),"Record Inserted",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                            sendMobileNumberToServer(phone);
                         }else Toast.makeText(getApplicationContext(),"Password must contain at least 8 characters, having letter,digit and special symbol",Toast.LENGTH_SHORT).show();
 
                     } else {
@@ -58,9 +70,40 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
+    private void sendMobileNumberToServer(String mobileNumber) {
+        progressBar.setVisibility(View.VISIBLE);
+        ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+        Call<MobileNumberRequest> call = apiService.sendMobileNumber(mobileNumber);
+        call.enqueue(new Callback<MobileNumberRequest>() {
+            @Override
+            public void onResponse(Call<MobileNumberRequest> call, Response<MobileNumberRequest> response) {
+
+                // Hide the ProgressBar when response is received
+                progressBar.setVisibility(View.GONE);
+
+                if (response.isSuccessful()) {
+                    mobileNumberRequest = response.body();
+                    // Start OTP Activity
+                    Intent intent = new Intent(RegisterActivity.this, OTPActivity.class);
+                    intent.putExtra("mobile_number", mobileNumber); // Pass mobile number to OTP Activity
+                    intent.putExtra("referenceNo", mobileNumberRequest.getReferenceNo()); // Pass referenceNo to OTP Activity
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Failed to send mobile number", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MobileNumberRequest> call, Throwable t) {
+                // Hide the ProgressBar on failure
+                progressBar.setVisibility(View.GONE);
+                Log.e("MobileNumberActivity", t.getMessage());
+            }
+        });
+    }
     public static boolean isValid(String passwordhere) {
         int f1 = 0, f2 = 0, f3 = 0;
         if (passwordhere.length() < 8) {

@@ -9,14 +9,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-public class Database extends SQLiteOpenHelper {
-    public Database(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+public class DatabaseLogin extends SQLiteOpenHelper {
+    public DatabaseLogin(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String qry1 = "create table users(username text,email text, password text)";
+        String qry1 = "create table users(username text,phone text, password text)";
         sqLiteDatabase.execSQL(qry1);
     }
 
@@ -24,10 +24,10 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
-    public void register(String username, String email,String password){
+    public void register(String username, String phone,String password){
         ContentValues cv = new ContentValues();
         cv.put("username",username);
-        cv.put("email",email);
+        cv.put("phone",phone);
         cv.put("password",password);
         SQLiteDatabase db = getWritableDatabase();
         db.insert("users",null,cv);

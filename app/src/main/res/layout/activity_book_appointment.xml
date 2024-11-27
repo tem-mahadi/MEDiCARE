@@ -8,7 +8,7 @@
     android:background="@drawable/background"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".LoginActivity">
+    tools:context=".BookAppointmentActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -17,29 +17,20 @@
         android:text="24*7 Healthcare"
         android:textColor="@color/purple_200"
         android:textSize="34sp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="16dp"
         android:textStyle="bold" />
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone"
-        tools:ignore="ExtraText"
-        />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registration"
+        android:text="Book Appointment"
         android:textColor="@color/colorWhite"
         android:textSize="34sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editTextRegUsername"
+        android:id="@+id/editTextAppName"
         android:layout_width="330dp"
         android:layout_height="43dp"
         android:layout_marginTop="48dp"
@@ -47,7 +38,7 @@
         android:drawableStart="@drawable/ic_baseline_person_24"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Full Name"
         android:inputType="textPersonName"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
@@ -58,16 +49,16 @@
         />
 
     <EditText
-        android:id="@+id/editTextRegPhone"
+        android:id="@+id/editTextAppAddress"
         android:layout_width="330dp"
         android:layout_height="43dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/input_bg"
-        android:drawableStart="@drawable/baseline_phone_24"
+        android:drawableStart="@drawable/ic_baseline_security_24"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="Phone Number"
-        android:inputType="phone"
+        android:hint="Address"
+        android:inputType="textPersonName"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
         android:paddingEnd="10dp"
@@ -76,16 +67,16 @@
         android:textColorHint="@color/colorWhite"
         />
     <EditText
-        android:id="@+id/editTextRegPassword"
+        android:id="@+id/editTextAppCont"
         android:layout_width="330dp"
         android:layout_height="43dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/input_bg"
-        android:drawableStart="@drawable/ic_baseline_security_24"
+        android:drawableStart="@drawable/ic_baseline_email_24"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="Password"
-        android:inputType="textVisiblePassword"
+        android:hint="Contact Number"
+        android:inputType="number"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
         android:paddingEnd="10dp"
@@ -94,16 +85,16 @@
         android:textColorHint="@color/colorWhite"
         />
     <EditText
-        android:id="@+id/editTextConfirmPassword"
+        android:id="@+id/editTextAppFee"
         android:layout_width="330dp"
         android:layout_height="43dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/input_bg"
-        android:drawableStart="@drawable/ic_baseline_security_24"
+        android:drawableStart="@drawable/ic_baseline_person_24"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="Confirm Password"
-        android:inputType="textVisiblePassword"
+        android:hint="Fees"
+        android:inputType="textPersonName"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
         android:paddingEnd="10dp"
@@ -112,22 +103,70 @@
         android:textColorHint="@color/colorWhite"
         />
 
+    <LinearLayout
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="      Select Date"
+        android:textColor="@color/yellowLight"
+        />
+
+            <Button
+                android:id="@+id/btnAppDate"
+                style="?android:spinnerStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dd/mm/yy" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  Select Time"
+        android:textColor="@color/yellowLight"
+        />
     <Button
-        android:id="@+id/buttonRegister"
+        android:layout_width="wrap_content"
+        android:id="@+id/btnAppTime"
+        android:layout_height="wrap_content"
+        style="?android:spinnerStyle"
+        android:text="hr:mm"
+        />
+        </LinearLayout>
+</LinearLayout>
+
+    <Button
+        android:id="@+id/buttonAppointment"
         android:layout_width="323dp"
         android:layout_height="41dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/btn_bg"
-        android:text="REGISTER"
+        android:text="Book"
         />
 
-    <TextView
-        android:id="@+id/textViewExUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Already have an user?"
-        android:textColor="@color/colorWhite"
+    <Button
+        android:id="@+id/buttonAppBack"
+        android:layout_width="323dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_bg"
+        android:text="Back"
         />
+
 
 </LinearLayout>

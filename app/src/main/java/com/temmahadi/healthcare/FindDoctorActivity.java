@@ -41,14 +41,14 @@ public class FindDoctorActivity extends AppCompatActivity {
         });
 
         CardView surgeon= findViewById(R.id.FDSurgeon);
-        exit.setOnClickListener(view -> {
+        surgeon.setOnClickListener(view -> {
             Intent it= new Intent(FindDoctorActivity.this, DoctorDetailsActivity.class);
             it.putExtra("title","Surgeon");
             startActivity(it);
         });
 
         CardView cardiologist= findViewById(R.id.FDCardiologist);
-        exit.setOnClickListener(view -> {
+        cardiologist.setOnClickListener(view -> {
             Intent it= new Intent(FindDoctorActivity.this, DoctorDetailsActivity.class);
             it.putExtra("title","Cardiologist");
             startActivity(it);
