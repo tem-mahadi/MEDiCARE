@@ -44,6 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                finish();
             }
         });
         btn.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void sendMobileNumberToServer(String mobileNumber) {
+        Log.d("PhoneUpload", "Sending phone: " + mobileNumber);
         progressBar.setVisibility(View.VISIBLE);
         ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
         Call<MobileNumberRequest> call = apiService.sendMobileNumber(mobileNumber);
@@ -82,7 +84,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                 // Hide the ProgressBar when response is received
                 progressBar.setVisibility(View.GONE);
-
                 if (response.isSuccessful()) {
                     mobileNumberRequest = response.body();
                     // Start OTP Activity

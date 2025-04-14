@@ -29,6 +29,8 @@ public class OTPActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otpactivity);
 
+        Log.d("ActivityCheck", "OTPActivity started");
+
         edotp= findViewById(R.id.editTextOTP);
         submitbtn= findViewById(R.id.buttonSubmit);
         progressBar= findViewById(R.id.progressBarOTP);
@@ -66,6 +68,7 @@ public class OTPActivity extends AppCompatActivity {
                         Toast.makeText(OTPActivity.this, "OTP Verified! Access granted.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(OTPActivity.this, LoginActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                     Toast.makeText(OTPActivity.this, "Request has been sent", Toast.LENGTH_SHORT).show();
                     // Proceed to next step of the app
