@@ -1,6 +1,7 @@
 package com.temmahadi.healthcare.Adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -49,6 +50,7 @@ public class LabTestAdapter extends RecyclerView.Adapter<LabTestAdapter.myViewho
                 it.putExtra("text2",packageList.get(0).getDetails()[position]);
                 it.putExtra("text3",list.get(position).getDetails()[4]);
                 context.startActivity(it);
+                ((Activity) context).finish();
             }
         });
 

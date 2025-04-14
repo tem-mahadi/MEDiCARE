@@ -17,6 +17,6 @@ public interface ItemsDao {
     List<Items> getAll(String category);
     @Query("DELETE FROM items")
     void clearAll();
-//    @Query("SELECT * FROM items WHERE category = :category and Details = :details")
-//    boolean check(String category, String[] details);
+   @Query("SELECT Details FROM items WHERE category= :category")
+    String getDetails(String category);
 }

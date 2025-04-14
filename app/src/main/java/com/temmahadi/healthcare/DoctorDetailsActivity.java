@@ -48,6 +48,7 @@ public class DoctorDetailsActivity extends AppCompatActivity {
 
         btn.setOnClickListener(view -> {
             startActivity(new Intent(DoctorDetailsActivity.this, FindDoctorActivity.class));
+            finish();
         });
     }
         private void updateRecycler(List < Items > list) {

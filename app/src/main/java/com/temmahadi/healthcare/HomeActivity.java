@@ -32,9 +32,8 @@ public class HomeActivity extends AppCompatActivity {
         LabTestData labTestData = new LabTestData(database);
         SharedPreferences.Editor editor= sharedPreferences.edit();
 
-        boolean data_inserted = sharedPreferences.getBoolean("isInserted",true);
-        if(!data_inserted) {
-            editor.putBoolean("isInserted",false);
+        if(!sharedPreferences.getBoolean("isInserted",false)) {
+            editor.putBoolean("isInserted",true);
             editor.apply();
             doctorDetailsData.doctor1();
             doctorDetailsData.doctor2();
@@ -49,15 +48,18 @@ public class HomeActivity extends AppCompatActivity {
             editor.clear();
             editor.apply();
             startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+            finish();
         });
 
         CardView findDoc= findViewById(R.id.FindDoc);
         findDoc.setOnClickListener(view -> {
             startActivity(new Intent(HomeActivity.this, FindDoctorActivity.class));
+            finish();
         });
         CardView LabTest= findViewById(R.id.LabTest);
         LabTest.setOnClickListener(view -> {
             startActivity(new Intent(HomeActivity.this, LabTestActivity.class));
+            finish();
         });
     }
 }

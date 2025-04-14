@@ -32,14 +32,13 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
             finish();
-            return; // Exit onCreate to prevent further execution
         }
 
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                String username = edUsername.getText().toString();
+                String username = edUsername.getText().toString();
 //                String password = edPassword.getText().toString();
 //                DatabaseLogin db= new DatabaseLogin(getApplicationContext(),"healthcare",null,1);
 //                if(username.isEmpty() || password.isEmpty()){
@@ -48,12 +47,12 @@ public class LoginActivity extends AppCompatActivity {
 //                else {
 //                    if(db.login(username,password)==1) {
 //                        Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
-//                        SharedPreferences.Editor editor= sharedPreferences.edit();
-//                        editor.putString("username",username);
+                        SharedPreferences.Editor editor= sharedPreferences.edit();
+                        editor.putString("username",username);
 //                        editor.putBoolean("directLogin",true);
-//                        editor.apply();
+                        editor.apply();
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-//                        finish();
+                        finish();
 //                    }
 //                    else { Toast.makeText(getApplicationContext(), "Invalid Password", Toast.LENGTH_SHORT).show(); }
 //                }

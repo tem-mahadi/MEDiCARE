@@ -74,6 +74,7 @@ public class BookAppointmentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(BookAppointmentActivity.this,FindDoctorActivity.class));
+                finish();
             }
         });
 

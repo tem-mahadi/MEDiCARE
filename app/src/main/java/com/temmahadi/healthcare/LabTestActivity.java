@@ -34,6 +34,7 @@ public class LabTestActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LabTestActivity.this,HomeActivity.class));
+                finish();
             }
         });
 
@@ -42,8 +43,6 @@ public class LabTestActivity extends AppCompatActivity {
         testList = databaseHelper.mainDAO().getAll("Lab Test");
         packageList = databaseHelper.mainDAO().getAll("Package Details");
         updateRecycler(testList);
-
-
     }
     private void updateRecycler(List < Items > list) {
         recyclerView.setHasFixedSize(true);
