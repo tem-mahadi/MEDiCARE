@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import com.temmahadi.healthcare.Data.DoctorDetailsData;
@@ -30,11 +29,9 @@ public class HomeActivity extends AppCompatActivity {
 //        database.mainDAO().clearAll();
         DoctorDetailsData doctorDetailsData = new DoctorDetailsData(database);
         LabTestData labTestData = new LabTestData(database);
-        SharedPreferences.Editor editor= sharedPreferences.edit();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        if(!sharedPreferences.getBoolean("isInserted",false)) {
-            editor.putBoolean("isInserted",true);
-            editor.apply();
+        if (!sharedPreferences.getBoolean("isInserted", false)) {
             doctorDetailsData.doctor1();
             doctorDetailsData.doctor2();
             doctorDetailsData.doctor3();
@@ -42,6 +39,8 @@ public class HomeActivity extends AppCompatActivity {
             doctorDetailsData.doctor5();
             labTestData.LBData();
             labTestData.package_details();
+            editor.putBoolean("isInserted", true);
+            editor.apply();
         }
         CardView exit= findViewById(R.id.Exit);
         exit.setOnClickListener(view -> {
