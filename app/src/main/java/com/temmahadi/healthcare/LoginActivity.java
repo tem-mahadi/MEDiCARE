@@ -39,23 +39,23 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String username = edUsername.getText().toString();
-//                String password = edPassword.getText().toString();
-//                DatabaseLogin db= new DatabaseLogin(getApplicationContext(),"healthcare",null,1);
-//                if(username.isEmpty() || password.isEmpty()){
-//                    Toast.makeText(getApplicationContext(),"Please fill all the details",Toast.LENGTH_SHORT).show();
-//                }
-//                else {
-//                    if(db.login(username,password)==1) {
-//                        Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                String password = edPassword.getText().toString();
+                DatabaseLogin db= new DatabaseLogin(getApplicationContext(),"healthcare",null,1);
+                if(username.isEmpty() || password.isEmpty()){
+                    Toast.makeText(getApplicationContext(),"Please fill all the details",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    if(db.login(username,password)==1) {
+                        Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                         SharedPreferences.Editor editor= sharedPreferences.edit();
                         editor.putString("username",username);
-//                        editor.putBoolean("directLogin",true);
+                        editor.putBoolean("directLogin",true);
                         editor.apply();
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         finish();
-//                    }
-//                    else { Toast.makeText(getApplicationContext(), "Invalid Password", Toast.LENGTH_SHORT).show(); }
-//                }
+                    }
+                    else { Toast.makeText(getApplicationContext(), "Invalid Password", Toast.LENGTH_SHORT).show(); }
+                }
             }
         });
         tv.setOnClickListener(new View.OnClickListener() {

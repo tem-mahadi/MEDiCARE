@@ -26,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText edUsername, edPhone, edPassword, edConfirm;
     Button btn;
     TextView tv; ProgressBar progressBar; MobileNumberRequest mobileNumberRequest;
+    String username,password,phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,18 +51,15 @@ public class RegisterActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = edUsername.getText().toString();
-                String phone = edPhone.getText().toString();
-                String password = edPassword.getText().toString();
+                username = edUsername.getText().toString();
+                phone = edPhone.getText().toString();
+                password = edPassword.getText().toString();
                 String confirm = edConfirm.getText().toString();
-                DatabaseLogin db= new DatabaseLogin(getApplicationContext(),"healthcare",null,1);
                 if (username.isEmpty() || phone.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please fill all the details", Toast.LENGTH_SHORT).show();
                 } else {
                     if (password.compareTo(confirm) == 0) {
                         if(isValid(password)){
-                            db.register(username,phone,password);
-                            Toast.makeText(getApplicationContext(),"Record Inserted",Toast.LENGTH_SHORT).show();
                             sendMobileNumberToServer(phone);
                         }else Toast.makeText(getApplicationContext(),"Password must contain at least 8 characters, having letter,digit and special symbol",Toast.LENGTH_SHORT).show();
 
@@ -88,6 +86,8 @@ public class RegisterActivity extends AppCompatActivity {
                     mobileNumberRequest = response.body();
                     // Start OTP Activity
                     Intent intent = new Intent(RegisterActivity.this, OTPActivity.class);
+                    intent.putExtra("username", username); // Pass mobile number to OTP Activity
+                    intent.putExtra("password", password); // Pass mobile number to OTP Activity
                     intent.putExtra("mobile_number", mobileNumber); // Pass mobile number to OTP Activity
                     intent.putExtra("referenceNo", mobileNumberRequest.getReferenceNo()); // Pass referenceNo to OTP Activity
                     startActivity(intent);

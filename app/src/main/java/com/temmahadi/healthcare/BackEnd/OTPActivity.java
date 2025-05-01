@@ -12,8 +12,11 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.temmahadi.healthcare.DatabaseLogin;
 import com.temmahadi.healthcare.LoginActivity;
 import com.temmahadi.healthcare.R;
+
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,7 +25,7 @@ import retrofit2.Response;
 public class OTPActivity extends AppCompatActivity {
     EditText edotp;
     Button submitbtn;
-    String phone;
+    String phone,username,password;
     String ref; ProgressBar progressBar; OTPRequest otpRequest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,9 @@ public class OTPActivity extends AppCompatActivity {
         progressBar= findViewById(R.id.progressBarOTP);
 
         phone= getIntent().getStringExtra("mobile_number");
+        username= getIntent().getStringExtra("username");
+        password= getIntent().getStringExtra("password");
+
         ref = getIntent().getStringExtra("referenceNo");
 
         Toast.makeText(OTPActivity.this, "\n"+ref, Toast.LENGTH_SHORT).show();
@@ -45,6 +51,9 @@ public class OTPActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String otp = edotp.getText().toString();
                 if (!otp.isEmpty()) {
+                    DatabaseLogin db= new DatabaseLogin(getApplicationContext(),"healthcare",null,1);
+                    db.register(username,phone,password);
+                    Toast.makeText(getApplicationContext(),"Record Inserted",Toast.LENGTH_SHORT).show();
                     verifyOTPWithServer(ref, otp);
                 } else {
                     Toast.makeText(OTPActivity.this, "Enter a valid OTP", Toast.LENGTH_SHORT).show();
@@ -64,7 +73,9 @@ public class OTPActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     otpRequest= response.body();
-                    if(otpRequest.getsubscriptionStatus()== "S1000") {
+                    if(Objects.equals(otpRequest.getsubscriptionStatus(), "S1000")) {
+//                        DatabaseLogin db= new DatabaseLogin(getApplicationContext(),"healthcare",null,1);
+//                        db.register(username,phone,password);
                         Toast.makeText(OTPActivity.this, "OTP Verified! Access granted.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(OTPActivity.this, LoginActivity.class);
                         startActivity(intent);
