@@ -50,41 +50,41 @@ public class LabTestDetailsActivity extends AppCompatActivity {
             }
         });
 
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences sharedPreferences= getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
-                String username= sharedPreferences.getString("username","").toString();
-                String product= tv1.getText().toString();
-                String cost= tv2.getText().toString();
-                String[] details= {username,product,cost};
-                // Fetch the details as a String
-                String detailsString = roomDB.mainDAO().getDetails(product);
-                // Convert the fetched string back to a String[] using your converter
-                String[] fetchedDetails = detailsString != null ? Converters.toStringArray(detailsString) : new String[]{};
-
-                // Compare the arrays
-                boolean check = Arrays.equals(fetchedDetails, details);
-                Log.d("adapt", "Username: " + username);
-                Log.d("adapt", "Product: " + product);
-                Log.d("adapt", "Cost: " + cost);
-                Log.d("adapt", "DetailsString: " + detailsString);
-                Log.d("adapt", "FetchedDetails: " + Arrays.toString(fetchedDetails));
-                Log.d("adapt", "Comparison Result: " + check);
-                if(check) {
-                    Toast.makeText(getApplicationContext(), "Product Already Added", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    item = new Items(details,product);
-                new Thread(() -> {
-                        roomDB.mainDAO().saveItem(item);
-                }).start();
-
-                    Toast.makeText(getApplicationContext(), "Record Inserted to Cart", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LabTestDetailsActivity.this,LabTestActivity.class));
-                }
-            }
-        });
+//        add.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                SharedPreferences sharedPreferences= getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
+//                String username= sharedPreferences.getString("username","").toString();
+//                String product= tv1.getText().toString();
+//                String cost= tv2.getText().toString();
+//                String[] details= {username,product,cost};
+//                // Fetch the details as a String
+//                String detailsString = roomDB.mainDAO().getDetails(product);
+//                // Convert the fetched string back to a String[] using your converter
+//                String[] fetchedDetails = detailsString != null ? Converters.toStringArray(detailsString) : new String[]{};
+//
+//                // Compare the arrays
+//                boolean check = Arrays.equals(fetchedDetails, details);
+//                Log.d("adapt", "Username: " + username);
+//                Log.d("adapt", "Product: " + product);
+//                Log.d("adapt", "Cost: " + cost);
+//                Log.d("adapt", "DetailsString: " + detailsString);
+//                Log.d("adapt", "FetchedDetails: " + Arrays.toString(fetchedDetails));
+//                Log.d("adapt", "Comparison Result: " + check);
+//                if(check) {
+//                    Toast.makeText(getApplicationContext(), "Product Already Added", Toast.LENGTH_SHORT).show();
+//                }
+//                else {
+//                    item = new Items(details,product);
+//                new Thread(() -> {
+//                        roomDB.mainDAO().saveItem(item);
+//                }).start();
+//
+//                    Toast.makeText(getApplicationContext(), "Record Inserted to Cart", Toast.LENGTH_SHORT).show();
+//                    startActivity(new Intent(LabTestDetailsActivity.this,LabTestActivity.class));
+//                }
+//            }
+//        });
 
     }
 }
