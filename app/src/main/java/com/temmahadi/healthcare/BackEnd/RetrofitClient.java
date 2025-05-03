@@ -8,7 +8,7 @@ public class RetrofitClient {
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("https://ruetandroiddevelopers.com/Mahadi/") // Add your server URL here
+                    .baseUrl("https://ruetandroiddevelopers.com/Mahadi(MEDCA)/") // Add your server URL here
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
