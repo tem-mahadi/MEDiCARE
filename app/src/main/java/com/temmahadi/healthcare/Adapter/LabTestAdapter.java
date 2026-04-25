@@ -1,14 +1,13 @@
 package com.temmahadi.healthcare.Adapter;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import androidx.cardview.widget.CardView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,24 +35,58 @@ public class LabTestAdapter extends RecyclerView.Adapter<LabTestAdapter.myViewho
     @Override
     public void onBindViewHolder(@NonNull myViewholder holder, @SuppressLint("RecyclerView") int position) {
         Log.d("ADAPT", "Retrieved items: ");
-        holder.line_1.setText(list.get(position).getDetails()[0]);
-        holder.line_2.setText(list.get(position).getDetails()[1]);
-        holder.line_3.setText(list.get(position).getDetails()[2]);
-        holder.line_4.setText(list.get(position).getDetails()[3]);
-        holder.line_5.setText("Total Cost: "+list.get(position).getDetails()[4]+"/-");
+        Items currentItem = list.get(position);
+        holder.line_1.setText(getSafeDetail(currentItem, 0));
+        holder.line_2.setText(getSafeDetail(currentItem, 1));
+        holder.line_3.setText(getSafeDetail(currentItem, 2));
+        holder.line_4.setText(getSafeDetail(currentItem, 3));
+        holder.line_5.setText("Total Cost: " + getSafeDetail(currentItem, 4) + "/-");
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent it= new Intent(context, LabTestDetailsActivity.class);
-                it.putExtra("text1",list.get(position).getDetails()[0]);
-                it.putExtra("text2",packageList.get(0).getDetails()[position]);
-                it.putExtra("text3",list.get(position).getDetails()[4]);
+                it.putExtra("text1", getSafeDetail(currentItem, 0));
+                it.putExtra("text2", resolvePackageDetails(position));
+                it.putExtra("text3", getSafeDetail(currentItem, 4));
                 context.startActivity(it);
-                ((Activity) context).finish();
             }
         });
 
+    }
+
+    private String getSafeDetail(Items item, int index) {
+        if (item == null || item.getDetails() == null) {
+            return "";
+        }
+        String[] details = item.getDetails();
+        if (index < 0 || index >= details.length || details[index] == null) {
+            return "";
+        }
+        return details[index];
+    }
+
+    private String resolvePackageDetails(int position) {
+        if (packageList == null || packageList.isEmpty()) {
+            return "Details unavailable";
+        }
+
+        // Preferred format: one package-detail row per test row.
+        if (position >= 0 && position < packageList.size()) {
+            String perItemDetails = getSafeDetail(packageList.get(position), 0);
+            if (!perItemDetails.isEmpty()) {
+                return perItemDetails;
+            }
+        }
+
+        // Legacy format: one row with details spread across indexes [0..n].
+        String legacyDetails = getSafeDetail(packageList.get(0), position);
+        if (!legacyDetails.isEmpty()) {
+            return legacyDetails;
+        }
+
+        String fallback = getSafeDetail(packageList.get(0), 0);
+        return fallback.isEmpty() ? "Details unavailable" : fallback;
     }
     @Override
     public int getItemCount() {
@@ -61,7 +94,7 @@ public class LabTestAdapter extends RecyclerView.Adapter<LabTestAdapter.myViewho
     }
     public static class myViewholder extends RecyclerView.ViewHolder{
         TextView line_1,line_2,line_3,line_4,line_5;
-        LinearLayout linearLayout;
+        CardView linearLayout;
         public myViewholder(@NonNull View itemView) {
             super(itemView);
             line_1 = itemView.findViewById(R.id.line_a);

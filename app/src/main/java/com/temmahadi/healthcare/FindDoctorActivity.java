@@ -16,7 +16,6 @@ public class FindDoctorActivity extends AppCompatActivity {
 
         CardView exit= findViewById(R.id.Back);
         exit.setOnClickListener(view -> {
-            startActivity(new Intent(FindDoctorActivity.this, HomeActivity.class));
             finish();
         });
 
@@ -25,7 +24,6 @@ public class FindDoctorActivity extends AppCompatActivity {
             Intent it= new Intent(FindDoctorActivity.this, DoctorDetailsActivity.class);
             it.putExtra("title","Family Physician");
             startActivity(it);
-            finish();
         });
 
         CardView dietitian= findViewById(R.id.FDDietitian);
@@ -33,7 +31,6 @@ public class FindDoctorActivity extends AppCompatActivity {
             Intent it= new Intent(FindDoctorActivity.this, DoctorDetailsActivity.class);
             it.putExtra("title","Dietitian");
             startActivity(it);
-            finish();
         });
 
         CardView dentist= findViewById(R.id.FDDentist);
@@ -41,7 +38,6 @@ public class FindDoctorActivity extends AppCompatActivity {
             Intent it= new Intent(FindDoctorActivity.this, DoctorDetailsActivity.class);
             it.putExtra("title","Dentist");
             startActivity(it);
-            finish();
         });
 
         CardView surgeon= findViewById(R.id.FDSurgeon);
@@ -49,7 +45,6 @@ public class FindDoctorActivity extends AppCompatActivity {
             Intent it= new Intent(FindDoctorActivity.this, DoctorDetailsActivity.class);
             it.putExtra("title","Surgeon");
             startActivity(it);
-            finish();
         });
 
         CardView cardiologist= findViewById(R.id.FDCardiologist);
@@ -57,7 +52,13 @@ public class FindDoctorActivity extends AppCompatActivity {
             Intent it= new Intent(FindDoctorActivity.this, DoctorDetailsActivity.class);
             it.putExtra("title","Cardiologist");
             startActivity(it);
-            finish();
+        });
+
+        CardView other= findViewById(R.id.FDOther);
+        other.setOnClickListener(view -> {
+            Intent it= new Intent(FindDoctorActivity.this, DoctorDetailsActivity.class);
+            it.putExtra("title","Other");
+            startActivity(it);
         });
 
     }

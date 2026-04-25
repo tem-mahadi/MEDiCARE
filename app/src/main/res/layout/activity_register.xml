@@ -1,133 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    android:orientation="vertical"
-    android:gravity="center"
+    android:background="@drawable/bg_gradient_login"
+    android:fillViewport="true"
     tools:context=".RegisterActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="24*7 Healthcare"
-        android:textColor="@color/purple_200"
-        android:textSize="34sp"
-        android:layout_marginBottom="100dp"
-        android:textStyle="bold" />
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone"
-        tools:ignore="ExtraText"
-        />
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="32dp">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Registration"
-        android:textColor="@color/colorWhite"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        />
+        <!-- Spacer -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-    <EditText
-        android:id="@+id/editTextRegUsername"
-        android:layout_width="330dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/input_bg"
-        android:drawableStart="@drawable/ic_baseline_person_24"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="textPersonName"
-        android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        />
+        <!-- App Icon -->
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/stethoscope3"
+            android:contentDescription="MediCare Logo" />
 
-    <EditText
-        android:id="@+id/editTextRegPhone"
-        android:layout_width="330dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/input_bg"
-        android:drawableStart="@drawable/baseline_phone_24"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Phone Number"
-        android:inputType="phone"
-        android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        />
-    <EditText
-        android:id="@+id/editTextRegPassword"
-        android:layout_width="330dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/input_bg"
-        android:drawableStart="@drawable/ic_baseline_security_24"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textVisiblePassword"
-        android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        />
-    <EditText
-        android:id="@+id/editTextConfirmPassword"
-        android:layout_width="330dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/input_bg"
-        android:drawableStart="@drawable/ic_baseline_security_24"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Confirm Password"
-        android:inputType="textVisiblePassword"
-        android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MEDiCARE"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.15"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="32dp" />
 
-    <Button
-        android:id="@+id/buttonRegister"
-        android:layout_width="323dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/btn_bg"
-        android:text="REGISTER"
-        />
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            tools:ignore="ExtraText" />
 
-    <TextView
-        android:id="@+id/textViewExUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Already have an user?"
-        android:textColor="@color/colorWhite"
-        />
+        <!-- Registration Title -->
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Account"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Join MEDiCARE today"
+            android:textColor="#80CBC4"
+            android:textSize="14sp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Username -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:textColor="#B0BEC5"
+            android:textSize="13sp"
+            android:layout_marginBottom="6dp" />
+
+        <EditText
+            android:id="@+id/editTextRegUsername"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_input_white"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:drawablePadding="12dp"
+            android:drawableTint="@color/primary"
+            android:ems="10"
+            android:hint="Choose a username"
+            android:inputType="textPersonName"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_hint"
+            android:textSize="15sp" />
+
+        <!-- Phone -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textColor="#B0BEC5"
+            android:textSize="13sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp" />
+
+        <EditText
+            android:id="@+id/editTextRegPhone"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_input_white"
+            android:drawableStart="@drawable/baseline_phone_24"
+            android:drawablePadding="12dp"
+            android:drawableTint="@color/primary"
+            android:ems="10"
+            android:hint="01XXXXXXXXX"
+            android:inputType="phone"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_hint"
+            android:textSize="15sp" />
+
+        <!-- Password -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textColor="#B0BEC5"
+            android:textSize="13sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp" />
+
+        <EditText
+            android:id="@+id/editTextRegPassword"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_input_white"
+            android:drawableStart="@drawable/ic_baseline_security_24"
+            android:drawablePadding="12dp"
+            android:drawableTint="@color/primary"
+            android:ems="10"
+            android:hint="Min 8 chars, letter + digit + symbol"
+            android:inputType="textPassword"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_hint"
+            android:textSize="15sp" />
+
+        <!-- Confirm Password -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Confirm Password"
+            android:textColor="#B0BEC5"
+            android:textSize="13sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp" />
+
+        <EditText
+            android:id="@+id/editTextConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_input_white"
+            android:drawableStart="@drawable/ic_baseline_security_24"
+            android:drawablePadding="12dp"
+            android:drawableTint="@color/primary"
+            android:ems="10"
+            android:hint="Re-enter your password"
+            android:inputType="textPassword"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_hint"
+            android:textSize="15sp" />
+
+        <!-- Register Button -->
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/bg_button_accent"
+            android:text="CREATE ACCOUNT"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.1" />
+
+        <!-- Login Link -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account? "
+                android:textColor="#90A4AE"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textViewExUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign In"
+                android:textColor="#00BFA5"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Spacer -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+</ScrollView>

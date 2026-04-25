@@ -1,172 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    android:orientation="vertical"
-    android:gravity="center"
+    android:background="@color/background"
+    android:fillViewport="true"
     tools:context=".BookAppointmentActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="24*7 Healthcare"
-        android:textColor="@color/purple_200"
-        android:textSize="34sp"
-        android:layout_marginBottom="16dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Book Appointment"
-        android:textColor="@color/colorWhite"
-        android:textSize="34sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/editTextAppName"
-        android:layout_width="330dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/input_bg"
-        android:drawableStart="@drawable/ic_baseline_person_24"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Full Name"
-        android:inputType="textPersonName"
-        android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        />
-
-    <EditText
-        android:id="@+id/editTextAppAddress"
-        android:layout_width="330dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/input_bg"
-        android:drawableStart="@drawable/ic_baseline_security_24"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Address"
-        android:inputType="textPersonName"
-        android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        />
-    <EditText
-        android:id="@+id/editTextAppCont"
-        android:layout_width="330dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/input_bg"
-        android:drawableStart="@drawable/ic_baseline_email_24"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Contact Number"
-        android:inputType="number"
-        android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        />
-    <EditText
-        android:id="@+id/editTextAppFee"
-        android:layout_width="330dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/input_bg"
-        android:drawableStart="@drawable/ic_baseline_person_24"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Fees"
-        android:inputType="textPersonName"
-        android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        />
-
     <LinearLayout
-        android:layout_width="290dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        >
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="      Select Date"
-        android:textColor="@color/yellowLight"
-        />
+        <!-- Toolbar -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_gradient_primary"
+            android:padding="20dp">
 
             <Button
-                android:id="@+id/btnAppDate"
-                style="?android:spinnerStyle"
+                android:id="@+id/buttonAppBack"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:text="←"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="dd/mm/yy" />
-        </LinearLayout>
+                android:layout_centerInParent="true"
+                android:text="Book Appointment"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="  Select Time"
-        android:textColor="@color/yellowLight"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:id="@+id/btnAppTime"
-        android:layout_height="wrap_content"
-        style="?android:spinnerStyle"
-        android:text="hr:mm"
-        />
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Doctor Information"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Doctor Name -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Doctor Name"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/editTextAppName"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_input_modern"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:hint="Full Name"
+                android:inputType="textPersonName" />
+
+            <!-- Address -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hospital Address"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/editTextAppAddress"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_input_modern"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:hint="Address"
+                android:inputType="textPersonName" />
+
+            <!-- Contact -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Contact Number"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/editTextAppCont"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_input_modern"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:hint="Contact Number"
+                android:inputType="number" />
+
+            <!-- Fee -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Consultation Fee"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/editTextAppFee"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_input_modern"
+                android:textColor="@color/success"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:hint="Fees"
+                android:inputType="textPersonName" />
+
+            <!-- Date and Time -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Date &amp; Time"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnAppDate"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_button_secondary"
+                    android:text="📅  Select Date"
+                    android:textColor="@color/primary"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btnAppTime"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_button_secondary"
+                    android:text="🕐  Select Time"
+                    android:textColor="@color/primary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Book Button -->
+            <Button
+                android:id="@+id/buttonAppointment"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/bg_button_primary"
+                android:text="CONFIRM BOOKING"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
         </LinearLayout>
-</LinearLayout>
-
-    <Button
-        android:id="@+id/buttonAppointment"
-        android:layout_width="323dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/btn_bg"
-        android:text="Book"
-        />
-
-    <Button
-        android:id="@+id/buttonAppBack"
-        android:layout_width="323dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/btn_bg"
-        android:text="Back"
-        />
-
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +17,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthCare"
         tools:targetApi="31">
+
+        <activity
+            android:name=".CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddCustomDoctorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddCustomLabTestActivity"
+            android:exported="false" />
+        <receiver android:name=".ReminderBroadcastReceiver" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyAppointmentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpcomingLabTestsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmergencyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HealthTipsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BMICalculatorActivity"
+            android:exported="false" />
         <activity
             android:name=".BackEnd.OTPActivity"
             android:exported="false" />
@@ -32,20 +65,19 @@
             android:name=".FindDoctorActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

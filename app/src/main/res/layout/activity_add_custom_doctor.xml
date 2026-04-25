@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <!-- Toolbar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_gradient_primary"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/addCustomDocBackBtn"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:text="←"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/addCustomDocTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Add Doctor"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <EditText
+                android:id="@+id/etCustomDocName"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_input_modern"
+                android:hint="Doctor Name"
+                android:paddingStart="16dp"
+                android:textColorHint="@color/text_secondary"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/etCustomDocAddress"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_input_modern"
+                android:hint="Hospital / Address"
+                android:paddingStart="16dp"
+                android:textColorHint="@color/text_secondary"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/etCustomDocContact"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_input_modern"
+                android:hint="Contact Number"
+                android:paddingStart="16dp"
+                android:inputType="phone"
+                android:textColorHint="@color/text_secondary"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/etCustomDocExp"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_input_modern"
+                android:hint="Experience (e.g. 5 yrs)"
+                android:paddingStart="16dp"
+                android:textColorHint="@color/text_secondary"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/etCustomDocFee"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_input_modern"
+                android:hint="Consultation Fee (Taka)"
+                android:paddingStart="16dp"
+                android:inputType="number"
+                android:textColorHint="@color/text_secondary"
+                android:layout_marginBottom="32dp" />
+
+            <Button
+                android:id="@+id/btnSaveCustomDoc"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_button_primary"
+                android:text="SAVE DOCTOR"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

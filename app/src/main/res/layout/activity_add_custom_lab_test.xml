@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <!-- Toolbar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_gradient_primary"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/addCustomLabBackBtn"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:text="←"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Add Lab Test"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <EditText
+                android:id="@+id/etCustomLabName"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_input_modern"
+                android:hint="Test/Package Name (e.g. Full Body)"
+                android:paddingStart="16dp"
+                android:textColorHint="@color/text_secondary"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/etCustomLabCost"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_input_modern"
+                android:hint="Cost (Taka)"
+                android:paddingStart="16dp"
+                android:inputType="number"
+                android:textColorHint="@color/text_secondary"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/etCustomLabDetails"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@drawable/bg_input_modern"
+                android:hint="Included Tests (e.g. Blood Glucose, CBC, Thyroid Profile)"
+                android:gravity="top|start"
+                android:padding="16dp"
+                android:inputType="textMultiLine"
+                android:textColorHint="@color/text_secondary"
+                android:layout_marginBottom="32dp" />
+
+            <Button
+                android:id="@+id/btnSaveCustomLab"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_button_primary"
+                android:text="SAVE LAB TEST"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

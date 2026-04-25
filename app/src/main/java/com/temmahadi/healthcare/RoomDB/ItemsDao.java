@@ -17,6 +17,8 @@ public interface ItemsDao {
     List<Items> getAll(String category);
     @Query("DELETE FROM items")
     void clearAll();
+    @Query("DELETE FROM items WHERE category IN (:categories)")
+    void deleteByCategories(List<String> categories);
    @Query("SELECT Details FROM items WHERE category= :category")
     String getDetails(String category);
 }

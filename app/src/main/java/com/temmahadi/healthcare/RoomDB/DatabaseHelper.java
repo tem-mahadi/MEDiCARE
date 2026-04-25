@@ -9,7 +9,7 @@ import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 
 @TypeConverters({Converters.class})
-@Database(entities = Items.class,version = 1,exportSchema = false)
+@Database(entities = {Items.class, Appointment.class, CartItem.class, BookedLabTest.class, CustomDoctor.class, CustomLabTest.class}, version = 4, exportSchema = false)
 public abstract class DatabaseHelper extends RoomDatabase {
     private static DatabaseHelper database;
     private static String DATABASE_NAME = "MyDB";
@@ -22,4 +22,9 @@ public abstract class DatabaseHelper extends RoomDatabase {
         return database;
     }
     public abstract ItemsDao mainDAO();
+    public abstract AppointmentDao appointmentDao();
+    public abstract CartDao cartDao();
+    public abstract BookedLabTestDao bookedLabTestDao();
+    public abstract CustomDoctorDao customDoctorDao();
+    public abstract CustomLabTestDao customLabTestDao();
 }
