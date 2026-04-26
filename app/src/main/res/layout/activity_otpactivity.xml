@@ -5,66 +5,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back1"
-    android:orientation="vertical"
+    android:background="@drawable/bg_gradient_login"
     android:gravity="center"
+    android:orientation="vertical"
+    android:padding="32dp"
     tools:context=".BackEnd.OTPActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/baseline_add_24"
+        android:contentDescription="OTP Icon"
+        android:background="@drawable/bg_icon_circle"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp"
+        app:tint="@color/primary" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="24 * 7 HEALTHCARE"
-        android:textColor="@color/purple_200"
-        android:textSize="34sp"
-        android:layout_marginBottom="110dp"
-        android:textStyle="bold" />
-    <ProgressBar
-        android:id="@+id/progressBarOTP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone"
-        tools:ignore="ExtraText"
-        />
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enter OTP"
-        android:textColor="@color/colorWhite"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        />
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="#FFFFFF">
 
-    <EditText
-        android:id="@+id/editTextOTP"
-        android:layout_width="330dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/input_bg"
-        android:drawableStart="@drawable/baseline_phone_24"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="OTP"
-        android:inputType="number"
-        android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
 
-    <Button
-        android:id="@+id/buttonSubmit"
-        android:layout_width="323dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/btn_bg"
-        android:text="Submit OTP"
-        />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Verification Code"
+                android:textColor="@color/primary"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_gravity="center" />
 
+            <TextView
+                android:id="@+id/tvOTPPrompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please enter the verification code sent to your mobile number."
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="24dp" />
 
+            <EditText
+                android:id="@+id/editTextOTP"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_input_modern"
+                android:drawableStart="@drawable/ic_baseline_security_24"
+                android:drawablePadding="12dp"
+                android:drawableTint="@color/primary"
+                android:hint="Enter 6-digit OTP"
+                android:inputType="numberPassword"
+                android:maxLength="6"
+                android:gravity="center_horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_hint"
+                android:textSize="20sp"
+                android:letterSpacing="0.2" />
 
+            <ProgressBar
+                android:id="@+id/progressBarOTP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/buttonSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_button_accent"
+                android:text="VERIFY &amp; SUBSCRIBE"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>

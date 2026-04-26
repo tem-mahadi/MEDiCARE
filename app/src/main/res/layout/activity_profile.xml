@@ -47,6 +47,15 @@
             android:textColor="#B0BEC5"
             android:textSize="14sp"
             android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/profilePhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01XXXXXXXXX"
+            android:textColor="#B0BEC5"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
     </LinearLayout>
 
     <ScrollView
@@ -170,6 +179,17 @@
                 android:background="@drawable/bg_button_secondary"
                 android:text="BACK TO HOME"
                 android:textColor="@color/primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnUnsubscribe"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="#FF3B30"
+                android:text="UNSUBSCRIBE"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 

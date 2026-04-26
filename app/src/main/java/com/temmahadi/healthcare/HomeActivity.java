@@ -34,6 +34,14 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         SharedPreferences sharedPreferences = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
+        
+        // Subscription Check
+        if (!sharedPreferences.getBoolean("isSubscribed", false)) {
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+            return;
+        }
+        
         String username = sharedPreferences.getString("username", "");
 
         // Set greeting

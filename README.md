@@ -1,102 +1,93 @@
-# MediCare
+# 🏥 MEDiCARE: Your Premium Personal Health Assistant
 
-MediCare is a comprehensive healthcare app designed to simplify medical activities. It enables users to seamlessly book doctor appointments, purchase medicines online, access informative health articles, and arrange lab tests—all from one convenient platform.
-
----
-
-## Features
-
-### 👩‍⚕️ Book Doctor Appointments
-- Browse a list of available doctors by specialty.
-- Schedule appointments quickly and securely.
-- Get instant confirmation and reminders for your bookings.
-
-### 📦 Purchase Medicines Online
-- Order prescription and over-the-counter medicines from trusted pharmacies.
-- Track orders and delivery status.
-- Get notifications on medicine delivery and availability.
-
-### 📖 Read Health Articles
-- Access a collection of informative articles written by medical experts.
-- Stay updated on health tips, wellness advice, and disease prevention.
-
-### 🏏 Arrange Lab Tests
-- Schedule lab tests at certified diagnostic centers.
-- Receive timely reports directly within the app.
-- Track your lab test history.
+MEDiCARE is a robust, offline-capable healthcare application designed to simplify medical activities. It enables users to securely subscribe via an OTP flow, book doctor appointments, arrange lab tests, calculate their BMI, and access emergency services. The app features a powerful local database that allows users to manage their own custom medical data alongside pre-loaded dummy data.
 
 ---
 
-## Tech Stack
-The MediCare app is built with the following technologies:
+## ✨ Key Features
 
-| **Technology**        | **Usage**                          |
-|-----------------------|------------------------------------|
-| Android SDK           | Core development                  |
-| Java                  | Primary programming language      |
-| XML                   | UI Design                         |   
-| Retrofit              | API calls and HTTP communication  |
-| Room Database         | Local database for storage        |
+### 🔒 Premium OTP-Based Subscription
+- **Secure Authentication**: Replaced legacy username/password with a strict Mobile Number + OTP flow.
+- **Subscription Model**: Premium access charged at just 2Tk/Day.
+- **Seamless Session Management**: Managed via secure `SharedPreferences`.
+- **Easy Opt-out**: Built-in unsubscription flow directly from the user profile.
+
+### 👩‍⚕️ Find & Book Doctors
+- **Dynamic Data Management**: Browse pre-loaded "dummy" doctors across various specialties (Cardiologist, Dietitian, Dentist, etc.).
+- **User-Generated Content**: Add and manage your own custom doctors locally. Custom doctors automatically appear at the top of the search lists.
+- **Offline Booking**: Schedule appointments quickly and securely, saved directly to the local database.
+
+### 🔬 Arrange Lab Tests & Cart System
+- **Pre-packaged Tests**: Access a variety of pre-defined lab test packages.
+- **Custom Lab Tests**: Users can add their own personalized lab tests to the database.
+- **Smart Cart Integration**: A fully functional cart system that seamlessly handles both hardcoded and user-added lab tests.
+
+### 📊 BMI Calculator & Health Tracking
+- Calculate Body Mass Index (BMI) and view health categories.
+- Track recent BMI results directly from the user profile dashboard.
+
+### 🚑 Emergency & Health Tips
+- Quick access to emergency contacts and health articles.
+- Localized notifications and reminders for upcoming appointments and tests.
 
 ---
 
-## Screenshots
+## 🛠 Tech Stack
 
-| Home Screen           | Appointment Booking               |
-|------------------------|-----------------------------------|
-| ![Home](screenshots/home_screen.png) | ![Booking](screenshots/booking_screen.png) |
+The MEDiCARE app is built using modern Android development practices:
 
-| Medicine Orders        | Lab Tests                        |
-|------------------------|-----------------------------------|
-| ![Medicines](screenshots/medicines_screen.png) | ![Lab Tests](screenshots/labtests_screen.png) |
+| **Technology** | **Usage** |
+| :--- | :--- |
+| **Android SDK** | Core application framework. |
+| **Java** | Primary programming language. |
+| **Room Database (v4)** | Robust local data persistence, handling schema migrations and custom user data. |
+| **Retrofit & OkHttp** | REST API communication with the PHP backend (for OTP and unsubscription). |
+| **SharedPreferences** | Session management and lightweight local storage. |
+| **XML & Material UI** | Glassmorphic, premium UI design with custom drawables and modern layouts. |
 
 ---
 
-## Installation
+## 🚀 Installation & Setup
 
-1. Clone the repository:
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/tem-mahadi/MEDiCARE.git
    ```
-2. Open the project in **Android Studio**.
-3. Sync Gradle files and build the project.
-4. Run the app on an emulator or a physical device.
+2. **Open the Project:**
+   Open the cloned directory in **Android Studio**.
+3. **Build & Sync:**
+   Allow Gradle to sync the dependencies. Ensure you have the latest Android SDK installed.
+4. **Run the App:**
+   Deploy to an emulator or a physical Android device (Minimum SDK 21+).
+
+> **Note:** The backend API (`send_otp.php`, `verify_otp.php`, `unsubscribe.php`) must be accessible via the URL specified in `RetrofitClient.java` for the authentication flow to function correctly.
 
 ---
 
-## Requirements
-- **Android Studio** (Latest version)
-- **Android SDK 21+** (Minimum supported)
-- Stable internet connection for API and data fetching.
+## 📱 Application Flow
+
+1. **Landing/Subscription:** Users enter their mobile number to subscribe (2Tk/Day) and receive an OTP.
+2. **Verification:** OTP is verified with the backend, granting access to the main application.
+3. **Home Dashboard:** Access to Find Doctors, Lab Tests, Cart, Appointments, and BMI Calculator.
+4. **Data Management:** Add custom doctors or lab tests via the Floating Action Buttons (FAB) in their respective screens.
+5. **Profile & Settings:** View stats, upcoming appointments, and manage the subscription.
 
 ---
 
-## How to Use
-1. **Register/Login**: Create an account or log in using Firebase Authentication.
-2. **Explore Features**: Navigate between sections using the bottom navigation bar.
-3. **Book Appointments**: Choose a doctor, pick a slot, and confirm your booking.
-4. **Order Medicines**: Add medicines to the cart, make payment, and track orders.
-5. **Schedule Lab Tests**: Pick your test, select a center, and get your reports online.
-6. **Read Articles**: Browse health tips and updates to stay informed.
+## 📄 License
 
----
-
-## License
 This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## Contact
-For any queries or feedback, reach out at:
+## 📬 Contact
+
+Developed and maintained by:
 
 - **Name**: Hasan Al Mahadi
 - **Email**: mahadi4uruetcse21@gmail.com
-- **GitHub**: [TEM Mahadi](https://github.com/tem-mahadi)
+- **GitHub**: [tem-mahadi](https://github.com/tem-mahadi)
 
 ---
 
-_"Simplifying healthcare, one tap at a time."_
-
----
-
-**Made with ❤️ by Hasan Al Mahadi.**
+*"Simplifying healthcare, one tap at a time."*
